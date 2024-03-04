@@ -1,0 +1,42 @@
+int cols = 10; // Número de columnas en la cuadrícula
+int rows = 10; // Número de filas en la cuadrícula
+int cellSize = 40; // Tamaño de cada celda en la cuadrícula
+int circleX = 20; // Posición inicial en x del círculo
+int circleY = 20; // Posición inicial en y del círculo
+int rectX = 220; // Posición inicial en x del rectángulo
+int rectY = 220; // Posición inicial en y del rectángulo
+int speedCircle = 2; // Velocidad de movimiento del círculo
+int speedRect = 1; // Velocidad de movimiento del rectángulo
+
+void setup() {
+  size(400,400);
+}
+
+void draw() {
+  background(255);
+  
+  // Dibujar cuadrícula
+  for (int i = 0; i < cols; i++) {
+    for (int j = 0; j < rows; j++) {
+      stroke(0);
+      noFill();
+      rect(i * cellSize, j * cellSize, cellSize, cellSize);
+    }
+  }
+  
+  // Mover y dibujar el círculo
+  fill(0, 0, 255); // Color azul
+  circleX += speedCircle;
+  if (circleX > width) {
+    circleX = 0;
+  }
+  ellipse(circleX, circleY, 30, 30);
+  
+  // Mover y dibujar el rectángulo
+  fill(0, 255, 0); // Color verde
+  rectY += speedRect;
+  if (rectY > height) {
+    rectY = 0;
+  }
+  rect(rectX, rectY, 30, 30);
+}
